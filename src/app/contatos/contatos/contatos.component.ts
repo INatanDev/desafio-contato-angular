@@ -1,3 +1,4 @@
+import { ContatosService } from './../services/contatos.service';
 import { Component, OnInit } from '@angular/core';
 
 import { Contatos } from '../models/contatos';
@@ -30,7 +31,9 @@ export class ContatosComponent implements OnInit {
     'data_cadastro'
   ];
 
-  constructor() { }
+  constructor(private contatosService: ContatosService) {
+    this.contatos = this.contatosService.list();
+  }
 
   ngOnInit(): void {
   }
