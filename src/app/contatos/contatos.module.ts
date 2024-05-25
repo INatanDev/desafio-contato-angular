@@ -1,8 +1,10 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 
+import { AppMaterialModule } from '../shared/app-material/app-material.module';
 import { ContatosRoutingModule } from './contatos-routing.module';
 import { ContatosComponent } from './contatos/contatos.component';
+
 
 
 @NgModule({
@@ -11,7 +13,8 @@ import { ContatosComponent } from './contatos/contatos.component';
   ],
   imports: [
     CommonModule,
-    ContatosRoutingModule
+    ContatosRoutingModule,
+    AppMaterialModule
   ]
 })
 export class ContatosModule { }
