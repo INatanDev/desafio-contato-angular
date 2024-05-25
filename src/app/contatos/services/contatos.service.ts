@@ -16,7 +16,6 @@ export class ContatosService {
     return this.httpClient.get<Contatos[]>(this.API)
     .pipe(
       first(),
-      delay(5000),
       tap(contatos => console.log(contatos))
     );
   }
