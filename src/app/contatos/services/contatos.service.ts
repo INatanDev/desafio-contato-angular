@@ -1,24 +1,23 @@
 import { Injectable } from '@angular/core';
 import { Contatos } from '../models/contatos';
 import { HttpClient} from '@angular/common/http'
+import { delay, first, take, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ContatosService {
+
+  private readonly API = '/assets/contatos.json';
+
   constructor(private httpClient: HttpClient) { }
 
-  list(): Contatos[] {
-    return[
-      {_id: "1",
-        nome: "Natan",
-        email: "teste@teste.com",
-        celular: "91919191912",
-        telefone: "8181818182",
-        favorito: true,
-        ativo: false,
-        data_cadastro: "10/08/1998"
-      }
-    ];
+  list() {
+    return this.httpClient.get<Contatos[]>(this.API)
+    .pipe(
+      first(),
+      delay(5000),
+      tap(contatos => console.log(contatos))
+    );
   }
 }

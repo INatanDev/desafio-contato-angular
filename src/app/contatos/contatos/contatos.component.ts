@@ -2,6 +2,7 @@ import { ContatosService } from './../services/contatos.service';
 import { Component, OnInit } from '@angular/core';
 
 import { Contatos } from '../models/contatos';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-contatos',
@@ -10,17 +11,7 @@ import { Contatos } from '../models/contatos';
 })
 export class ContatosComponent implements OnInit {
 
-  contatos: Contatos[] = [
-    {_id: "1",
-      nome: "Natan",
-      email: "teste@teste.com",
-      celular: "91919191912",
-      telefone: "8181818182",
-      favorito: true,
-      ativo: false,
-      data_cadastro: "10/08/1998"
-    }
-  ];
+  contatos$: Observable<Contatos[]>;
   displayedColumns = [
     'nome',
     'email',
@@ -32,7 +23,7 @@ export class ContatosComponent implements OnInit {
   ];
 
   constructor(private contatosService: ContatosService) {
-    this.contatos = this.contatosService.list();
+    this.contatos$ = this.contatosService.list();
   }
 
   ngOnInit(): void {
