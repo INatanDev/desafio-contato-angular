@@ -5,12 +5,14 @@ import { AppMaterialModule } from '../shared/app-material/app-material.module';
 import { ContatosRoutingModule } from './contatos-routing.module';
 import { ContatosComponent } from './contatos/contatos.component';
 import { SharedModule } from '../shared/shared.module';
+import { ContatosFormComponent } from './contatos-form/contatos-form.component';
 
 
 
 @NgModule({
   declarations: [
-    ContatosComponent
+    ContatosComponent,
+    ContatosFormComponent
   ],
   imports: [
     CommonModule,
