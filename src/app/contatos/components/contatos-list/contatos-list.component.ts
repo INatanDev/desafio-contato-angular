@@ -1,7 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
-import { Contatos } from '../models/contatos';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Contatos } from '../../models/contatos';
+
 
 @Component({
   selector: 'app-contatos-list',
@@ -11,6 +11,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class ContatosListComponent implements OnInit {
 
   @Input() contatos: Contatos[] = [];
+  @Output() add = new EventEmitter(false);
 
   readonly displayedColumns = [
     'nome',
@@ -23,14 +24,13 @@ export class ContatosListComponent implements OnInit {
     'acoes'
   ];
 
-  constructor(private router: Router,
-    private route: ActivatedRoute) { }
+  constructor() { }
 
   ngOnInit(): void {
   }
 
   onAdd() {
-    this.router.navigate(['new'], {relativeTo: this.route});
+    this.add.emit(true);
   }
 
   toggleAtivo(contato: Contatos): void {
