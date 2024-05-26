@@ -6,6 +6,7 @@ import { Contatos } from '../models/contatos';
 import { ContatosService } from './../services/contatos.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ErrorDialogComponent } from 'src/app/shared/components/error-dialog/error-dialog.component';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-contatos',
@@ -22,11 +23,14 @@ export class ContatosComponent implements OnInit {
     'telefone',
     'favorito',
     'ativo',
-    'cadastro'
+    'cadastro',
+    'acoes'
   ];
 
   constructor(private contatosService: ContatosService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private router: Router,
+    private route: ActivatedRoute
   ) {
     this.contatos$ = this.contatosService.list()
     .pipe(
@@ -49,6 +53,10 @@ export class ContatosComponent implements OnInit {
 
   toggleAtivo(contato: Contatos): void {
     contato.ativo = contato.ativo === 's' ? 'n' : 's';
+  }
+
+  onAdd() {
+    this.router.navigate(['new'], {relativeTo: this.route});
   }
 
   ngOnInit(): void {
