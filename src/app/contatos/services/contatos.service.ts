@@ -8,7 +8,7 @@ import { delay, first, take, tap } from 'rxjs';
 })
 export class ContatosService {
 
-  private readonly API = '/assets/contatos.json';
+  private readonly API = 'api/contato';
 
   constructor(private httpClient: HttpClient) { }
 

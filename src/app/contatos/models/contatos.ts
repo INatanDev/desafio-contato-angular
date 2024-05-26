@@ -4,7 +4,7 @@ export interface Contatos {
   email: string;
   celular: string;
   telefone: string;
-  favorito: boolean;
-  ativo: boolean;
-  data_cadastro: string;
+  favorito: string;
+  ativo: string;
+  cadastro: Date;
 }

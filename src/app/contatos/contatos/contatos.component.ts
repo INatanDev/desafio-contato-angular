@@ -1,3 +1,4 @@
+import { HasElementRef } from './../../../../node_modules/@angular/material/core/common-behaviors/color.d';
 import { Component, OnInit } from '@angular/core';
 import { catchError, Observable, of } from 'rxjs';
 
@@ -21,7 +22,7 @@ export class ContatosComponent implements OnInit {
     'telefone',
     'favorito',
     'ativo',
-    'data_cadastro'
+    'cadastro'
   ];
 
   constructor(private contatosService: ContatosService,
@@ -42,7 +43,16 @@ export class ContatosComponent implements OnInit {
     });
   }
 
+  toggleFavorito(contato: Contatos): void {
+    contato.favorito = contato.favorito === 's' ? 'n' : 's';
+  }
+
+  toggleAtivo(contato: Contatos): void {
+    contato.ativo = contato.ativo === 's' ? 'n' : 's';
+  }
+
   ngOnInit(): void {
+
   }
 
 }
