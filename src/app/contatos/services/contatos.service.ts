@@ -19,4 +19,8 @@ export class ContatosService {
       tap(contatos => console.log(contatos))
     );
   }
+
+  save(record: Contatos ){
+    return this.httpClient.post<Contatos[]>(this.API, record).pipe(first());
+  }
 }
