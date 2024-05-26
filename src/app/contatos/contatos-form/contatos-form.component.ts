@@ -1,6 +1,6 @@
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { ContatosService } from '../services/contatos.service';
@@ -12,9 +12,9 @@ import { ContatosService } from '../services/contatos.service';
 })
 export class ContatosFormComponent implements OnInit {
 
-  form: FormGroup;
+  form: UntypedFormGroup;
 
-  constructor(private formBuider: FormBuilder,
+  constructor(private formBuider: UntypedFormBuilder,
     private service: ContatosService,
     private snackBar: MatSnackBar,
     private location: Location
