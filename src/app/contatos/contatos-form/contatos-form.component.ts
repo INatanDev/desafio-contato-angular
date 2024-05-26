@@ -1,6 +1,6 @@
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { ContatosService } from '../services/contatos.service';
@@ -20,12 +20,12 @@ export class ContatosFormComponent implements OnInit {
     private location: Location
   ) {
     this.form = this.formBuider.group({
-      nome: [null],
-      email: [null],
-      celular: [null],
-      telefone: [null],
-      favorito: [null],
-      ativo: [null],
+      nome: new FormControl<string>(''),
+      email: new FormControl<string>(''),
+      celular: new FormControl<string>(''),
+      telefone: new FormControl<string>(''),
+      favorito: new FormControl<string>(''),
+      ativo: new FormControl<string>(''),
     });
   }
 
