@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { first, tap } from 'rxjs';
+import { delay, first, tap } from 'rxjs';
 
 import { Contatos } from '../models/contatos';
 
@@ -17,6 +17,7 @@ export class ContatosService {
     return this.httpClient.get<Contatos[]>(this.API)
     .pipe(
       first(),
+      delay(5000),
       tap(contatos => console.log(contatos))
     );
   }

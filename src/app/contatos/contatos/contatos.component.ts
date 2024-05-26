@@ -16,16 +16,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class ContatosComponent implements OnInit {
 
   contatos$: Observable<Contatos[]>;
-  displayedColumns = [
-    'nome',
-    'email',
-    'celular',
-    'telefone',
-    'favorito',
-    'ativo',
-    'cadastro',
-    'acoes'
-  ];
 
   constructor(private contatosService: ContatosService,
     public dialog: MatDialog,
