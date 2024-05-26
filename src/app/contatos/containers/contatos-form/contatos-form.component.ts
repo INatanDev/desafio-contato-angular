@@ -2,8 +2,9 @@ import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { ContatosService } from '../../services/contatos.service';
 
-import { ContatosService } from '../services/contatos.service';
+
 
 @Component({
   selector: 'app-contatos-form',

@@ -6,7 +6,7 @@
 
   <div class="mat-elevation-z8 column-flex">
 
-    <app-contatos-list *ngIf="contatos$ | async as contatos; else loading" [contatos]="contatos"></app-contatos-list>
+    <app-contatos-list *ngIf="contatos$ | async as contatos; else loading" [contatos]="contatos" (add)="onAdd()"></app-contatos-list>
 
     <ng-template #loading>
       <div class="loading-spinner">

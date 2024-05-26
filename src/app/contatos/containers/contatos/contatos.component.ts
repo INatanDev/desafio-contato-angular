@@ -1,12 +1,12 @@
-import { HasElementRef } from './../../../../node_modules/@angular/material/core/common-behaviors/color.d';
 import { Component, OnInit } from '@angular/core';
-import { catchError, Observable, of } from 'rxjs';
-
-import { Contatos } from '../models/contatos';
-import { ContatosService } from './../services/contatos.service';
 import { MatDialog } from '@angular/material/dialog';
-import { ErrorDialogComponent } from 'src/app/shared/components/error-dialog/error-dialog.component';
 import { ActivatedRoute, Router } from '@angular/router';
+import { catchError, Observable, of } from 'rxjs';
+import { ErrorDialogComponent } from 'src/app/shared/components/error-dialog/error-dialog.component';
+import { ContatosService } from '../../services/contatos.service';
+import { Contatos } from '../../models/contatos';
+
+
 
 @Component({
   selector: 'app-contatos',
