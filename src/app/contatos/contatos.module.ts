@@ -6,6 +6,7 @@ import { ContatosRoutingModule } from './contatos-routing.module';
 import { ContatosComponent } from './contatos/contatos.component';
 import { SharedModule } from '../shared/shared.module';
 import { ContatosFormComponent } from './contatos-form/contatos-form.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -18,7 +19,8 @@ import { ContatosFormComponent } from './contatos-form/contatos-form.component';
     CommonModule,
     ContatosRoutingModule,
     AppMaterialModule,
-    SharedModule
+    SharedModule,
+    ReactiveFormsModule
   ]
 })
 export class ContatosModule { }
