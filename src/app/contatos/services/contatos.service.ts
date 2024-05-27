@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { delay, first, tap } from 'rxjs';
+import { Observable, delay, first, tap } from 'rxjs';
 
 import { Contatos } from '../models/contatos';
 
@@ -13,11 +13,10 @@ export class ContatosService {
 
   constructor(private httpClient: HttpClient) { }
 
-  list() {
-    return this.httpClient.get<Contatos[]>(this.API)
-    .pipe(
+  list(searchTerm?: string): Observable<Contatos[]> {
+    const url = searchTerm ? `${this.API}?search=${searchTerm}` : this.API;
+    return this.httpClient.get<Contatos[]>(url).pipe(
       first(),
-      //delay(5000),
       tap(contatos => console.log(contatos))
     );
   }
@@ -42,5 +41,9 @@ export class ContatosService {
 
   private update(record: Partial<Contatos>) {
     return this.httpClient.put<Contatos[]>(`${this.API}/${record.id}`, record).pipe(first());
+  }
+
+  search(term: string): Observable<Contatos[]> {
+    return this.httpClient.get<Contatos[]>(`${this.API}?search=${term}`).pipe(first());
   }
 }

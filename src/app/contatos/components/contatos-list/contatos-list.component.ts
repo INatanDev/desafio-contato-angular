@@ -14,6 +14,8 @@ export class ContatosListComponent implements OnInit {
   @Output() add = new EventEmitter(false);
   @Output() edit = new EventEmitter(false);
 
+  filteredContatos: Contatos[] = [];
+
   readonly displayedColumns = [
     'nome',
     'email',
@@ -28,6 +30,7 @@ export class ContatosListComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    this.filteredContatos = this.contatos;
   }
 
   onAdd() {
@@ -46,4 +49,12 @@ export class ContatosListComponent implements OnInit {
     contato.favorito = contato.favorito === 's' ? 'n' : 's';
   }
 
+  onSearch(event: Event): void {
+    const target = event.target as HTMLInputElement;
+    const value = target.value.trim().toLowerCase();
+    this.filteredContatos = this.contatos.filter(contato =>
+      contato.nome.toLowerCase().includes(value) ||
+      contato.email.toLowerCase().includes(value)
+    );
+  }
 }
