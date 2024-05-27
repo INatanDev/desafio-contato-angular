@@ -23,10 +23,24 @@ export class ContatosService {
   }
 
   save(record: Partial<Contatos>){
-    return this.httpClient.post<Contatos[]>(this.API, record).pipe(first());
+    console.log(record);
+    if (record.id) {
+      console.log('update realizado');
+      return this.update(record);
+    }
+    console.log('create realizado');
+    return this.create(record);
   }
 
   loadById(id: string){
     return this.httpClient.get<Contatos>(`${this.API}/${id}`);
+  }
+
+  private create(record: Partial<Contatos>) {
+    return this.httpClient.post<Contatos[]>(this.API, record).pipe(first());
+  }
+
+  private update(record: Partial<Contatos>) {
+    return this.httpClient.put<Contatos[]>(`${this.API}/${record.id}`, record).pipe(first());
   }
 }
