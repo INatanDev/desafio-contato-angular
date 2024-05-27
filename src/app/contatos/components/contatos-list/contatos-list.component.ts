@@ -52,9 +52,15 @@ export class ContatosListComponent implements OnInit {
   onSearch(event: Event): void {
     const target = event.target as HTMLInputElement;
     const value = target.value.trim().toLowerCase();
+    const searchTerm = value.replace(/%/g, '.*');
+
+    const regex = new RegExp(searchTerm, 'i');
     this.filteredContatos = this.contatos.filter(contato =>
-      contato.nome.toLowerCase().includes(value) ||
-      contato.email.toLowerCase().includes(value)
+      regex.test(contato.nome.toLowerCase()) ||
+      regex.test(contato.email.toLowerCase()) ||
+      (contato.celular && contato.celular.length <= 11 && regex.test(contato.celular.toLowerCase())) ||
+      (contato.telefone && contato.telefone.length <= 10 && regex.test(contato.telefone.toLowerCase())) ||
+      regex.test(new Date(contato.cadastro).toISOString().toLowerCase())
     );
   }
 }
