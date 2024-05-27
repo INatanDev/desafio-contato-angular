@@ -45,7 +45,7 @@
 
   <!-- data_cadastro Column -->
   <ng-container matColumnDef="cadastro">
-    <mat-header-cell *matHeaderCellDef> Cadastro </mat-header-cell>
+    <mat-header-cell *matHeaderCellDef class="column-cadastro"> Cadastro </mat-header-cell>
     <mat-cell *matCellDef="let contatos"> {{contatos.cadastro}} </mat-cell>
   </ng-container>
 
@@ -59,7 +59,7 @@
 
     <mat-cell *matCellDef="let contatos" class="action-column">
       <button mat-icon-button color="primary" aria-label="Editar o contato">
-        <mat-icon>edit</mat-icon>
+        <mat-icon (click)="onEdit(contatos)" >edit</mat-icon>
       </button>
     </mat-cell>
 

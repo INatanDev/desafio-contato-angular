@@ -12,6 +12,7 @@ export class ContatosListComponent implements OnInit {
 
   @Input() contatos: Contatos[] = [];
   @Output() add = new EventEmitter(false);
+  @Output() edit = new EventEmitter(false);
 
   readonly displayedColumns = [
     'nome',
@@ -31,6 +32,10 @@ export class ContatosListComponent implements OnInit {
 
   onAdd() {
     this.add.emit(true);
+  }
+
+  onEdit(contatos: Contatos){
+    this.edit.emit(contatos);
   }
 
   toggleAtivo(contato: Contatos): void {

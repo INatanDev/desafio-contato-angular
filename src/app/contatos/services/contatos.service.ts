@@ -17,12 +17,16 @@ export class ContatosService {
     return this.httpClient.get<Contatos[]>(this.API)
     .pipe(
       first(),
-      delay(5000),
+      //delay(5000),
       tap(contatos => console.log(contatos))
     );
   }
 
-  save(record: Contatos ){
+  save(record: Partial<Contatos>){
     return this.httpClient.post<Contatos[]>(this.API, record).pipe(first());
+  }
+
+  loadById(id: string){
+    return this.httpClient.get<Contatos>(`${this.API}/${id}`);
   }
 }

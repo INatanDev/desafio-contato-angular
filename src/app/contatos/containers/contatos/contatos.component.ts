@@ -49,6 +49,10 @@ export class ContatosComponent implements OnInit {
     this.router.navigate(['new'], {relativeTo: this.route});
   }
 
+  onEdit(contato: Contatos){
+    this.router.navigate(['edit', contato.id], {relativeTo: this.route});
+  }
+
   ngOnInit(): void {
 
   }
