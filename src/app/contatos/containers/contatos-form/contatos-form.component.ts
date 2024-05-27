@@ -1,10 +1,11 @@
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
+import { NonNullableFormBuilder } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { ActivatedRoute } from '@angular/router';
+
+import { Contatos } from '../../models/contatos';
 import { ContatosService } from '../../services/contatos.service';
-
-
 
 @Component({
   selector: 'app-contatos-form',
@@ -13,21 +14,23 @@ import { ContatosService } from '../../services/contatos.service';
 })
 export class ContatosFormComponent implements OnInit {
 
-  form: UntypedFormGroup;
+  form = this.formBuider.group({
+    id: [''],
+    nome: [''],
+    email: [''],
+    celular: [''],
+    telefone: [''],
+    favorito: [''],
+    ativo: [''],
+  });
 
-  constructor(private formBuider: UntypedFormBuilder,
+  constructor(private formBuider: NonNullableFormBuilder,
     private service: ContatosService,
     private snackBar: MatSnackBar,
-    private location: Location
+    private location: Location,
+    private route: ActivatedRoute
   ) {
-    this.form = this.formBuider.group({
-      nome: new FormControl<string>(''),
-      email: new FormControl<string>(''),
-      celular: new FormControl<string>(''),
-      telefone: new FormControl<string>(''),
-      favorito: new FormControl<string>(''),
-      ativo: new FormControl<string>(''),
-    });
+
   }
 
   onSubmit(){
@@ -52,6 +55,17 @@ export class ContatosFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    const contato: Contatos = this.route.snapshot.data['contato'];
+    console.log(contato);
+    this.form.setValue({
+      id: contato.id,
+      nome: contato.nome,
+      email: contato.email,
+      celular: contato.celular,
+      telefone: contato.telefone,
+      favorito: contato.favorito,
+      ativo: contato.ativo
+    });
   }
 
 }
