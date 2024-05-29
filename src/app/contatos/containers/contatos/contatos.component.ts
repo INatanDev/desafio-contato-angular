@@ -7,8 +7,6 @@ import { ContatosService } from '../../services/contatos.service';
 import { Contatos } from '../../models/contatos';
 import { ContatosListComponent } from '../../components/contatos-list/contatos-list.component';
 
-
-
 @Component({
   selector: 'app-contatos',
   templateUrl: './contatos.component.html',

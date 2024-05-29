@@ -46,7 +46,7 @@ export class ContatosFormComponent implements OnInit {
   }
 
   private onError(){
-    this.snackBar.open('Error ao salvar contato!',  '', { duration: 5000 });
+    this.snackBar.open('Error ao salvar contato! Verificar o número do celular já existe.',  '', { duration: 5000 });
   }
 
   private onSucess() {
